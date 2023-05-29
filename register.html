@@ -4,6 +4,7 @@
         <script src="js/code.js"></script>
         <link href="css/styles.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     </head>
 
     <body>
@@ -11,13 +12,15 @@
         
         <div id="loginDiv">
             <span id="inner-title">Register</span>
-            <input type="text" id="loginUsername" placeholder="Username"/><br/>
-            <input type="password" id="loginPassword" placeholder="Password"/><br/>
-            <input type="password" id="confirmPassword" placeholder="Confirm Password"/><br/>
+            <input type="text" id="loginUsername" placeholder="Username"/>
+            <input type="password" id="loginPassword" placeholder="Password" style="margin-left: -10px;"/>
+            <span class="material-symbols-rounded visibility" id="passwordVisibility" title="Show Password" onclick="toggleVisibility(0);">visibility</span>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password" style="margin-left: -10px;"/>
+            <span class="material-symbols-rounded visibility" id="confirmVisibility" title="Show Password" onclick="toggleVisibility(1);">visibility</span><br>
             <!-- Check that both passwords match and satisify requirements (character count, letters/numbers/symbols) -->
-            <button type="button" id="secondaryButton" class="buttons" onclick="goIndex();">Cancel</button>
-            <button type="button" id="mainButton" class="buttons" onclick="doRegister();">Register</button>
-            <button type="button" id="secondaryButton" class="buttons" onclick="goLogin();">Login</button>
+            <button type="button" id="cancelButton" onclick="goIndex();">Cancel</button>
+            <button type="button" id="mainButton" onclick="doRegister();">Register</button>
+            <button type="button" id="loginButton" onclick="goLogin();">Login</button>
             <span id="loginResult"></span>
         </div>
     </body>

@@ -3,7 +3,9 @@
 *
 {
     font-family: 'Ubuntu', sans-serif;
-    font-size: 30px;
+    font-size: 0px;
+    margin: 0;
+    padding: 0;
     text-align: center;
 }
 
@@ -12,27 +14,50 @@ body
     background: #1e1e24;
 }
 
-input[type="text"],input[type="password"]
-{
-    border: none;
-    border-radius: 10px;
-    margin-bottom: 2%;
-    width: 80%;
-}
-
-.buttons
+button
 {
     background: #fff8f0;
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    width: 25%;
+    height: 40px;
+    font-size: 30px;
+    margin: 10px;
+    width: 20%;
 }
 
-.buttons:hover
+button:hover
 {
     background: #92140c;
     color: #fff8f0;
+}
+
+input[type="text"],input[type="password"]
+{
+    background: #fff8f0;
+    border: none;
+    border-radius: 10px;
+    font-size: 30px;
+    height: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 80%;
+}
+
+/* See https://fonts.google.com/icons for information on settings */
+.material-symbols-rounded {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 700,
+    'GRAD' 0,
+    'opsz' 48
+}
+
+.visibility
+{
+    cursor: pointer;
+    margin-left: -34px;
+    user-select: none;
 }
 
 #addContactButton
@@ -51,11 +76,9 @@ input[type="text"],input[type="password"]
 {
     color: #92140c;
     display: inline-block;
-    font-size: 0.8em;
-    margin-bottom: 1%;
-    margin-left: 5%;
-    margin-top: 2%;
-    width: 90%;
+    font-size: 30px;
+    margin: 30px;
+    width: 80%;
 }
 
 #contactsDiv
@@ -64,6 +87,8 @@ input[type="text"],input[type="password"]
     border-bottom-left-radius: 20px;
     border-bottom-right-radius: 20px;
     margin-left: 15%;
+    padding-bottom: 30px;
+    padding-top: 30px;
     width: 70%;
 }
 
@@ -71,9 +96,10 @@ input[type="text"],input[type="password"]
 {
     color: #fff8f0;
     display: inline-block;
-    font-size: 0.8em;
-    margin-bottom: 2%;
-    width: 90%;
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
 }
 
 #loggedInDiv
@@ -102,8 +128,8 @@ input[type="text"],input[type="password"]
     background: #fff8f0;
     color: #92140c;
     display: inline-block;
-    font-size: 0.8em;
-    margin-bottom: 2%;
+    font-size: 30px;
+    margin-bottom: 30px;
     width: 80%;
 }
 
@@ -118,29 +144,30 @@ input[type="text"],input[type="password"]
     color: #fff8f0;
 }
 
+#searchContacts
+{
+    height: 60px;
+    width: 80%;
+}
+
 #searchContactsResult
 {
     display: none;
-}
-
-#searchText
-{
-    height: 60px;
-    width: 70%;
 }
 
 #title 
 {
     color: #fff8f0;
     font-size: 40px;
-    margin-bottom: 2%;
-    margin-top: 2%;
+    margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 #username
 {
     color: #fff8f0;
     display: inline-block;
-    margin-bottom: 2%;
-    width: 80%;
+    font-size: 30px;
+    margin-bottom: 30px;
+    width: 100%;
 }

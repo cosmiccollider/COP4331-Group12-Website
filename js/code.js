@@ -229,3 +229,30 @@ function searchContacts()
 		document.getElementById("searchContactsResult").innerHTML = err.message;
 	}
 }
+
+function toggleVisibility(confirmPassword)
+{
+	if (confirmPassword)
+	{
+		var icon = document.getElementById("confirmVisibility");
+		var text = document.getElementById("confirmPassword");
+	}
+	else
+	{
+		var icon = document.getElementById("passwordVisibility");
+		var text = document.getElementById("loginPassword");
+	}
+
+	if (text.type == "password")
+	{
+		icon.textContent = "visibility_off";
+		icon.title = "Hide Password";
+		text.type = "text";
+	}
+	else
+	{
+		icon.textContent = "visibility";
+		icon.title = "Show Password";
+		text.type = "password";
+	}
+}

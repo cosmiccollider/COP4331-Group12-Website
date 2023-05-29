@@ -4,7 +4,7 @@
         <script src="js/code.js"></script>
         <link href="css/styles.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     </head>
 
     <body>
@@ -12,12 +12,13 @@
         
         <div id="loginDiv">
             <span id="inner-title">Login</span>
-            <input type="text" id="loginUsername" placeholder="Username"/><br/>
-            <input type="password" id="loginPassword" placeholder="Password"/>
-            <button type="button" id="secondaryButton" class="buttons" onclick="goIndex();">Cancel</button>
+            <input type="text" id="loginUsername" placeholder="Username"/>
+            <input type="password" id="loginPassword" placeholder="Password" style="margin-left: -10px;"/>
+            <span class="material-symbols-rounded visibility" id="passwordVisibility" title="Show Password" onclick="toggleVisibility(0);">visibility</span><br>
+            <button type="button" id="cancelButton" onclick="goIndex();">Cancel</button>
             <!-- Change <... onclick="goContacts();"> to <... onclick="doLogin();"> once login functionality is implemented -->
-            <button type="button" class="buttons" id="mainButton" onclick="goContacts();">Login</button>
-            <button type="button" class="buttons" id="secondaryButton" onclick="goRegister();">Register</button>
+            <button type="button" id="mainButton" onclick="goContacts();">Login</button>
+            <button type="button" id="registerButton" onclick="goRegister();">Register</button>
             <span id="loginResult"></span>
         </div>
     </body>

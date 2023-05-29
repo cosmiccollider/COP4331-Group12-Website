@@ -18,18 +18,15 @@
         <h1 id="title">Contact Manager</h1>
 
         <div id="loggedInDiv">
-            <span id="username">Username</span><br/>
-            <button type="button" id="logoutButton" class="buttons" onclick="doLogout();">Log Out</button>
+            <span id="username">Username</span>
+            <button type="button" id="logoutButton" onclick="doLogout();">Log Out</button>
         </div>
 
         <div id="contactsDiv">
-            <br/>
-            <button type="button" id="addContactButton" class="buttons" onclick="addContact();">+</button>
-            </svg>
-            <!-- <span id="addContactResult"></span> -->
-            <input type="text" id="searchText" placeholder="Search Contacts"/><br/>
+            <button type="button" id="addContactButton" onclick="addContact();">+</button>
+            <input type="text" id="searchContacts" placeholder="Search Contacts"/>
             <span id="searchContactsResult"></span>
-            <p id="contactList"></p><br/><br/>
+            <p id="contactList"></p>
         </div>
     </body>
 </html>
