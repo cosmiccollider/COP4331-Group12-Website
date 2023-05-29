@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Register</title>
+        <script src="js/code.js"></script>
+        <link href="css/styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1 id="title">Contact Manager</h1>
+        
+        <div id="loginDiv">
+            <span id="inner-title">Register</span>
+            <input type="text" id="loginUsername" placeholder="Username"/><br/>
+            <input type="password" id="loginPassword" placeholder="Password"/><br/>
+            <input type="password" id="confirmPassword" placeholder="Confirm Password"/><br/>
+            <!-- Check that both passwords match and satisify requirements (character count, letters/numbers/symbols) -->
+            <button type="button" id="secondaryButton" class="buttons" onclick="goIndex();">Cancel</button>
+            <button type="button" id="mainButton" class="buttons" onclick="doRegister();">Register</button>
+            <button type="button" id="secondaryButton" class="buttons" onclick="goLogin();">Login</button>
+            <span id="loginResult"></span>
+        </div>
+    </body>
+</html>

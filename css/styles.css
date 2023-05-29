@@ -1,0 +1,146 @@
+/* Add alternative color pallete for light and dark modes */
+
+*
+{
+    font-family: 'Ubuntu', sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+body 
+{
+    background: #1e1e24;
+}
+
+input[type="text"],input[type="password"]
+{
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 2%;
+    width: 80%;
+}
+
+.buttons
+{
+    background: #fff8f0;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    width: 25%;
+}
+
+.buttons:hover
+{
+    background: #92140c;
+    color: #fff8f0;
+}
+
+#addContactButton
+{
+    height: 60px;
+    transition: 0.2s;
+    width: 60px;
+}
+
+#addContactButton:hover
+{
+    transform: rotate(90deg);
+}
+
+#addContactResult
+{
+    color: #92140c;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-bottom: 1%;
+    margin-left: 5%;
+    margin-top: 2%;
+    width: 90%;
+}
+
+#contactsDiv
+{
+    background: #1a2c74;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    margin-left: 15%;
+    width: 70%;
+}
+
+#inner-title
+{
+    color: #fff8f0;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-bottom: 2%;
+    width: 90%;
+}
+
+#loggedInDiv
+{
+    background: #1a2c74;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    margin-left: 15%;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    width: 70%;
+}
+
+#loginDiv
+{
+    background: #1a2c74;
+    border-radius: 20px;
+    margin-left: 15%;
+    padding-bottom: 30px;
+    padding-top: 30px;
+    width: 70%;
+}
+
+#loginResult
+{
+    background: #fff8f0;
+    color: #92140c;
+    display: inline-block;
+    font-size: 0.8em;
+    margin-bottom: 2%;
+    width: 80%;
+}
+
+#mainButton
+{
+    background: #ffbc70;
+}
+
+#mainButton:hover
+{
+    background: #92140c;
+    color: #fff8f0;
+}
+
+#searchContactsResult
+{
+    display: none;
+}
+
+#searchText
+{
+    height: 60px;
+    width: 70%;
+}
+
+#title 
+{
+    color: #fff8f0;
+    font-size: 40px;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+#username
+{
+    color: #fff8f0;
+    display: inline-block;
+    margin-bottom: 2%;
+    width: 80%;
+}
