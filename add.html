@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Add Contact</title>
+        <script src="js/code.js"></script>
+        <link href="css/styles.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+    </head>
+
+    <body>
+        <h1 id="title">Add Contact</h1>
+        <div class="mainContent" id="addDiv">
+            <input type="text" class="inputText" id="firstName" oninput="clearError(this);" onkeydown="keyInput(this);" placeholder="First Name"/>
+            <span class="error" id="firstNameError"></span>
+            <input type="text" class="inputText" id="lastName" onkeydown="keyInput(this);" placeholder="Last Name"/>
+            <input type="text" class="inputText" id="email" oninput="clearError(this);" onkeydown="keyInput(this);" placeholder="Email"/>
+            <span class="error" id="emailError"></span>
+            <input type="text" class="inputText" id="phoneNumber" oninput="clearError(this); phoneNumber();" onkeydown="keyInput(this);" placeholder="Phone"/>
+            <span class="error" id="phoneNumberError"></span>
+            <input type="text" class="inputText" id="birthday" oninput="clearError(this); birthday();" placeholder="Birthday"/>
+            <span class="error" id="birthdayError"></span>
+            
+            <div id="buttonDiv">
+                <button type="button" id="cancelButton" onclick="goContacts();">Cancel</button>
+                <button type="button" class="mainButton" id="saveButton" onclick="addContact();">Save</button>
+            </div>
+        </div>
+    </body>
+</html>
