@@ -16,12 +16,12 @@
         <div class="mainContent" id="registerDiv">
             <span id="inner-title">Register</span>
 
-            <input type="text" class="inputText" id="registerUsername" oninput="clearError(this); registerUsername();" onkeydown="keyInput(this);" placeholder="Username"/>
+            <input type="text" class="inputText" id="registerUsername" oninput="clearError(this); registerUsername();" onkeydown="proceed(this);" placeholder="Username"/>
             <span class="error" id="registerUsernameError"></span>
-            <input type="password" class="inputText" id="registerPassword" oninput="clearError(this); registerPassword();" onkeydown="keyInput(this);" placeholder="Password"/>
+            <input type="password" class="inputText" id="registerPassword" oninput="clearError(this); registerPassword();" onkeydown="proceed(this);" placeholder="Password"/>
             <span class="material-symbols-rounded passwordVisibility" id="registerVisibility" title="Show Password" onclick="toggleVisibility(this);">visibility</span>
             <span class="error" id="registerPasswordError"></span>
-            <input type="password" class="inputText" id="confirmPassword" oninput="clearError(this); confirmPassword();" onkeydown="keyInput(this);" placeholder="Confirm Password"/>
+            <input type="password" class="inputText" id="confirmPassword" oninput="clearError(this); confirmPassword();" onkeydown="proceed(this);" placeholder="Confirm Password"/>
             <span class="material-symbols-rounded passwordVisibility" id="confirmVisibility" title="Show Password" onclick="toggleVisibility(this);">visibility</span><br>
             <span class="error" id="confirmPasswordError"></span>
 

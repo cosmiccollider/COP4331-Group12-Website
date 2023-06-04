@@ -96,6 +96,7 @@ function doLogin()
 	goContacts(); // DEBUG
 
 	// Do Login
+	return;
 
 	let tmp = {username:username, password:password};
 	// var tmp = {username:username, password:hash};
@@ -187,6 +188,7 @@ function doRegister()
 	goContacts(); // DEBUG
 
 	// Do Register
+	return;
 }
 
 function registerPassword()
@@ -250,7 +252,14 @@ function registerUsername()
 function birthday()
 {
 	let birthdayField = document.getElementById("birthday");
+	let birthdayError = document.getElementById("birthdayError");
 	let birthdayValue = birthdayField.value.replace(/\D/g, "");
+
+	if (birthdayValue.length > 0 && birthdayValue.length < 8)
+	{
+		birthdayError.innerHTML = "Invalid birthday";
+		birthdayError.style.display = "inline-block";
+	}
 
 	if (birthdayValue.length >= 5)
 	{
@@ -266,9 +275,36 @@ function birthday()
 	}
 }
 
+// Formats phone number input field as XXX-XXXX or (XXX) XXX-XXXX depending on number of digits
+function phoneNumber()
+{
+	let phoneField = document.getElementById("phoneNumber");
+	let phoneError = document.getElementById("phoneNumberError");
+	let phoneValue = phoneField.value.replace(/\D/g, "");
+
+	if (phoneValue.length > 0 && phoneValue.length < 10)
+	{
+		phoneError.innerHTML = "Invalid phone number";
+		phoneError.style.display = "inline-block";
+	}
+
+	if (phoneValue.length >= 8)
+	{
+		phoneField.value = "(" + phoneValue.slice(0, 3) + ") " + phoneValue.slice(3, 6) + "-" + phoneValue.slice(6, 10);
+	}
+	else if (phoneValue.length >= 4 && phoneValue.length <= 7)
+	{
+		phoneField.value = phoneValue.slice(0, 3) + "-" + phoneValue.slice(3);
+	}
+	else
+	{
+		phoneField.value = phoneValue.slice(0, 3);
+	}
+}
+
 // Allows for logging in and registering by pressing "Enter" on the final input field
 // On other input fields, allows for moving focus to the next input field
-function keyInput(field)
+function proceed(field)
 {
 	document.getElementById(field.id).addEventListener("keyup", function (event)
 	{
@@ -292,26 +328,6 @@ function keyInput(field)
 			}
 		}
 	}, {once : true});
-}
-
-// Formats phone number input field as XXX-XXXX or (XXX) XXX-XXXX depending on number of digits
-function phoneNumber()
-{
-	let phoneField = document.getElementById("phoneNumber");
-	let phoneValue = phoneField.value.replace(/\D/g, "");
-
-	if (phoneValue.length >= 8)
-	{
-		phoneField.value = "(" + phoneValue.slice(0, 3) + ") " + phoneValue.slice(3, 6) + "-" + phoneValue.slice(6, 10);
-	}
-	else if (phoneValue.length >= 4 && phoneValue.length <= 7)
-	{
-		phoneField.value = phoneValue.slice(0, 3) + "-" + phoneValue.slice(3);
-	}
-	else
-	{
-		phoneField.value = phoneValue.slice(0, 3);
-	}
 }
 
 function readCookie()
@@ -366,18 +382,33 @@ function addContact()
 	let email = document.getElementById("email").value;
 	let phone = document.getElementById("phoneNumber").value;
 	let birthday = document.getElementById("birthday").value;
+	let firstError = document.getElementById("firstNameError");
+	let lastError = document.getElementById("lastNameError");
+	let emailError = document.getElementById("emailError");
+	let phoneError = document.getElementById("phoneNumberError");
+	let birthdayError = document.getElementById("birthdayError");
 	
-	// Validate first name isn't empty (last name can be empty)
+	// Validate first name isn't empty
+	if (first == "")
+	{
+		firstError.innerHTML = "Invalid first name";
+		firstError.style.display = "inline-block";
+	}
 
-	// Validate email is format user@site.ext (can be empty)
+	// Check if there are any active errors still being displayed
+	if (firstError.style.display == "inline-block"
+	|| lastError.style.display == "inline-block"
+	|| emailError.style.display == "inline-block"
+	|| phoneError.style.display == "inline-block"
+	|| birthdayError.style.display == "inline-block")
+	{
+		return;
+	}
 
-	// Validate phone number XXX-XXXX or (XXX) XXX-XXXX (can be empty)
-
-	// Validate birthday is XX/XX/XXXX (can be empty)
-	
 	goContacts(); // DEBUG
 
 	// Add Contact
+	return;
 	
 	let newContact = document.getElementById("contactText").value;
 	document.getElementById("addContactResult").innerHTML = "";

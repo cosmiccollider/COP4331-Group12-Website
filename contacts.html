@@ -26,12 +26,10 @@
             <button type="button" id="logoutButton" onclick="doLogout();">Log Out</button>
         </div>
 
-        <div class="mainContent" id="contactsDiv">
+        <div class="mainContent" id="searchDiv">
             <button type="button" class="material-symbols-rounded" id="addContactButton" title="Add Contact" onclick="goAdd();">add</button>
-            
-            <input type="text" class="inputText" id="searchContacts" placeholder="Search Contacts"/>
+            <input type="text" class="inputText" id="searchContacts" oninput="searchContacts()" placeholder="Search Contacts"/>
             <span id="searchContactsResult"></span>
-            
             <p id="contactList"></p>
         </div>
     </body>
