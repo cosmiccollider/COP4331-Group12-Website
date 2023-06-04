@@ -1,12 +1,13 @@
 <?php
-    $inData = getRequestInfo();
+    $inData     = getRequestInfo();
 
-    $userID = $inData["userID"];
-    $firstName = $inData["firstName"];
-    $lastName = $inData["lastName"];
-    $id = $inData["ID"];
+    $userID     = $inData["userID"];
+    $firstName  = $inData["firstName"];
+    $lastName   = $inData["lastName"];
+    $id         = $inData["ID"];
 
-    $conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+    $conf = json_decode(file_get_contents('conf.json'), true);
+    $conn = new mysqli($conf['hostname'], $conf['username'], $conf['password'], $conf['database']);
 
     if($conn->connect_error)
     {

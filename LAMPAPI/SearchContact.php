@@ -5,17 +5,19 @@
 	$searchResults = "";
 	$searchCount = 0;
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+    $conf = json_decode(file_get_contents('conf.json'), true);
+    $conn = new mysqli($conf['hostname'], $conf['username'], $conf['password'], $conf['database']);
+
 	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
 	}
 	else
 	{
-		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE (FirstName like ? OR LastName like?) AND UserID=?");
+		$stmt = $conn->prepare("SELECT * FROM Contacts WHERE (FirstName like ? OR LastName like ?) AND UserID = ?");
 		$searchName = "%" . $inData["search"] . "%";
-		$stmt->bind_param("sss", $searchName, $searchName, $inData["userID"]);
-		$stmt->execute();
+        $stmt->bind_param("sss", $searchName, $searchName, $inData["userId"]);
+        $stmt->execute();
 
 		$result = $stmt->get_result();
 

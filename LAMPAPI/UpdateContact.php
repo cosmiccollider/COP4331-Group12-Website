@@ -2,11 +2,11 @@
 
 	$inData = getRequestInfo();
 
-    $newFirstName = $inData["firstName"];
-	$newLastName = $inData["lastName"];
-	$newPhoneNumber = $inData["phone"];
-	$newEmail = $inData["email"];
-	$ID = $inData["ID"];
+    $newFirstName       = $inData["firstName"];
+	$newLast            = $inData["lastName"];
+	$newPhoneNumber     = $inData["phone"];
+	$newEmail           = $inData["email"];
+	$ID                 = $inData["ID"];
 
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");

@@ -1,4 +1,4 @@
-const urlBase = 'http://cop4331project.xyz/LAMPAPI';
+const urlBase = 'LAMPAPI';
 const extension = 'php';
 
 let userId = 0;
@@ -45,8 +45,8 @@ function clearError(field)
 // Checks that both password fields match when registering
 function confirmPassword()
 {
-	let password = document.getElementById("registerPassword").value;
-	let confirm = document.getElementById("confirmPassword").value;
+	let password 	= document.getElementById("registerPassword").value;
+	let confirm 	= document.getElementById("confirmPassword").value;
 	let confirmError = document.getElementById("confirmPasswordError");
 
 	if (confirm != password)
@@ -58,17 +58,19 @@ function confirmPassword()
 
 function doLogin()
 {
-	userId = 0;
-	firstName = "";
-	lastName = "";
+	userId 		= 0;
+	firstName 	= "";
+	lastName 	= "";
 
 	let username = document.getElementById("loginUsername").value;
 	let password = document.getElementById("loginPassword").value;
 	let usernameError = document.getElementById("loginUsernameError");
 	let passwordError = document.getElementById("loginPasswordError");
+
 	// var hash = md5(password);
 
 	// Placeholders
+	/*
 	let user = "user";
 	let pass = "pass";
 
@@ -78,7 +80,7 @@ function doLogin()
 		usernameError.style.display = "inline-block";
 		return;
 	}
-	
+
 	if (username != user)
 	{
 		usernameError.innerHTML = "User not found"
@@ -94,15 +96,15 @@ function doLogin()
 	}
 
 	goContacts(); // DEBUG
-
+	*/
 	// Do Login
-	return;
 
-	let tmp = {username:username, password:password};
-	// var tmp = {username:username, password:hash};
+	let tmp = {login:username, password:password};
 	let jsonPayload = JSON.stringify(tmp);
 	let url = urlBase + "/Login." + extension;
 	let xhr = new XMLHttpRequest();
+
+
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
 
@@ -136,6 +138,8 @@ function doLogin()
 	}
 }
 
+
+
 function doLogout()
 {
 	userId = 0;
@@ -150,14 +154,14 @@ function doRegister()
 	userId = 0;
 	firstName = "";
 	lastName = "";
-	
+
 	let username = document.getElementById("registerUsername").value;
 	let password = document.getElementById("registerPassword").value;
 	let confirm = document.getElementById("confirmPassword").value;
 	let usernameError = document.getElementById("registerUsernameError");
 	let passwordError = document.getElementById("registerPasswordError");
 	let confirmError = document.getElementById("confirmPasswordError");
-	
+
 	// Validate that all fields have correct input data
 
 	// Check in sequential order that no fields were left empty
@@ -188,7 +192,6 @@ function doRegister()
 	goContacts(); // DEBUG
 
 	// Do Register
-	return;
 }
 
 function registerPassword()
@@ -209,7 +212,7 @@ function registerPassword()
 		let number = new RegExp("(?=.*[0-9])");
 		let symbol = new RegExp("(?=.*[^A-Za-z0-9])");
 		let length = new RegExp("(?=.{8,})");
-		
+
 		if (!upper.test(password))
 		{
 			passwordError.innerHTML += "\r\nUppercase letter";
@@ -252,14 +255,7 @@ function registerUsername()
 function birthday()
 {
 	let birthdayField = document.getElementById("birthday");
-	let birthdayError = document.getElementById("birthdayError");
 	let birthdayValue = birthdayField.value.replace(/\D/g, "");
-
-	if (birthdayValue.length > 0 && birthdayValue.length < 8)
-	{
-		birthdayError.innerHTML = "Invalid birthday";
-		birthdayError.style.display = "inline-block";
-	}
 
 	if (birthdayValue.length >= 5)
 	{
@@ -275,36 +271,9 @@ function birthday()
 	}
 }
 
-// Formats phone number input field as XXX-XXXX or (XXX) XXX-XXXX depending on number of digits
-function phoneNumber()
-{
-	let phoneField = document.getElementById("phoneNumber");
-	let phoneError = document.getElementById("phoneNumberError");
-	let phoneValue = phoneField.value.replace(/\D/g, "");
-
-	if (phoneValue.length > 0 && phoneValue.length < 10)
-	{
-		phoneError.innerHTML = "Invalid phone number";
-		phoneError.style.display = "inline-block";
-	}
-
-	if (phoneValue.length >= 8)
-	{
-		phoneField.value = "(" + phoneValue.slice(0, 3) + ") " + phoneValue.slice(3, 6) + "-" + phoneValue.slice(6, 10);
-	}
-	else if (phoneValue.length >= 4 && phoneValue.length <= 7)
-	{
-		phoneField.value = phoneValue.slice(0, 3) + "-" + phoneValue.slice(3);
-	}
-	else
-	{
-		phoneField.value = phoneValue.slice(0, 3);
-	}
-}
-
 // Allows for logging in and registering by pressing "Enter" on the final input field
 // On other input fields, allows for moving focus to the next input field
-function proceed(field)
+function keyInput(field)
 {
 	document.getElementById(field.id).addEventListener("keyup", function (event)
 	{
@@ -328,6 +297,26 @@ function proceed(field)
 			}
 		}
 	}, {once : true});
+}
+
+// Formats phone number input field as XXX-XXXX or (XXX) XXX-XXXX depending on number of digits
+function phoneNumber()
+{
+	let phoneField = document.getElementById("phoneNumber");
+	let phoneValue = phoneField.value.replace(/\D/g, "");
+
+	if (phoneValue.length >= 8)
+	{
+		phoneField.value = "(" + phoneValue.slice(0, 3) + ") " + phoneValue.slice(3, 6) + "-" + phoneValue.slice(6, 10);
+	}
+	else if (phoneValue.length >= 4 && phoneValue.length <= 7)
+	{
+		phoneField.value = phoneValue.slice(0, 3) + "-" + phoneValue.slice(3);
+	}
+	else
+	{
+		phoneField.value = phoneValue.slice(0, 3);
+	}
 }
 
 function readCookie()
@@ -377,42 +366,29 @@ function saveCookie()
 
 function addContact()
 {
-	let first = document.getElementById("firstName").value;
-	let last = document.getElementById("lastName").value;
-	let email = document.getElementById("email").value;
-	let phone = document.getElementById("phoneNumber").value;
-	let birthday = document.getElementById("birthday").value;
-	let firstError = document.getElementById("firstNameError");
-	let lastError = document.getElementById("lastNameError");
-	let emailError = document.getElementById("emailError");
-	let phoneError = document.getElementById("phoneNumberError");
-	let birthdayError = document.getElementById("birthdayError");
-	
-	// Validate first name isn't empty
-	if (first == "")
-	{
-		firstError.innerHTML = "Invalid first name";
-		firstError.style.display = "inline-block";
-	}
+	readCookie();
 
-	// Check if there are any active errors still being displayed
-	if (firstError.style.display == "inline-block"
-	|| lastError.style.display == "inline-block"
-	|| emailError.style.display == "inline-block"
-	|| phoneError.style.display == "inline-block"
-	|| birthdayError.style.display == "inline-block")
-	{
-		return;
-	}
+	let first 		= document.getElementById("firstName").value;
+	let last 		= document.getElementById("lastName").value;
+	let email 		= document.getElementById("email").value;
+	let phone 		= document.getElementById("phoneNumber").value;
+	let birthday 	= document.getElementById("birthday").value;
+
+	// Validate first name isn't empty (last name can be empty)
+
+	// Validate email is format user@site.ext (can be empty)
+
+	// Validate phone number XXX-XXXX or (XXX) XXX-XXXX (can be empty)
+
+	// Validate birthday is XX/XX/XXXX (can be empty)
 
 	goContacts(); // DEBUG
 
 	// Add Contact
-	return;
-	
+
 	let newContact = document.getElementById("contactText").value;
 	document.getElementById("addContactResult").innerHTML = "";
-	
+
 	let tmp = {contact:newContact,userId,userId};
 	let jsonPayload = JSON.stringify( tmp );
 	let url = urlBase + '/AddContact.' + extension;
@@ -448,17 +424,21 @@ function editContact()
 
 function searchContacts()
 {
-	let srch = document.getElementById("searchText").value;
+	readCookie();
+
+	let srch = document.getElementById("searchContacts").value;
 	document.getElementById("searchContactsResult").innerHTML = "";
-	
+
 	let contactList = "";
-	
-	let tmp = {search:srch,userId:userId};
-	let jsonPayload = JSON.stringify(tmp);
-	let url = urlBase + '/SearchContacts.' + extension;
-	let xhr = new XMLHttpRequest();
+
+	let tmp 	= {userId:userId, search:srch};
+	let jsonPayload 				= JSON.stringify(tmp);
+	let url 						= urlBase + '/SearchContact.' + extension;
+	let xhr 			= new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	document.getElementById("contactList").innerHTML = "";
+
 	try
 	{
 		xhr.onreadystatechange = function()
@@ -466,25 +446,27 @@ function searchContacts()
 			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById("searchContactsResult").innerHTML = "Contact(s) has been retrieved";
+
 				let jsonObject = JSON.parse( xhr.responseText );
-				
-				for( let i=0; i<jsonObject.results.length; i++ )
+				for( let i= 0; i < jsonObject.results.length; i++ )
 				{
-					contactList += jsonObject.results[i];
-					if( i < jsonObject.results.length - 1 )
-					{
-						contactList += "<br />\r\n";
-					}
+					contactList += "<tr>" +
+						"<th>" + jsonObject.results[i].FirstName + "</th>" +
+						"<th>" + jsonObject.results[i].LastName + "</th>" +
+						"<th>" + jsonObject.results[i].Phone + "</th>" +
+						"<th>" + jsonObject.results[i].Email + "</th>" +
+						"<th>" + "<button type=\"button\" class=\"material-symbols-rounded\">add</button>" + "</th>" +
+					"</tr>";
 				}
-				
-				document.getElementsByTagName("p")[0].innerHTML = contactList;
+
+				document.getElementById("contactList").innerHTML = contactList;
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("searchContactsResult").innerHTML = err.message;
+		document.getElementById("contactList").innerHTML = err.message;
 	}
 }
 
