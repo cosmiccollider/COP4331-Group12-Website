@@ -3,10 +3,11 @@
 	$inData = getRequestInfo();
 
     $newFirstName       = $inData["firstName"];
-	$newLast            = $inData["lastName"];
+	$newLastName        = $inData["lastName"];
 	$newPhoneNumber     = $inData["phone"];
 	$newEmail           = $inData["email"];
 	$ID                 = $inData["ID"];
+	$birthDay			= $inData["birthDay"];
 
 
 	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
@@ -16,8 +17,8 @@
 	}
 	else
 	{
-		$stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName=?, Phone= ?, Email= ? WHERE ID= ?");
-		$stmt->bind_param("sssss", $newFirstName, $newLastName, $newPhoneNumber, $newEmail, $ID);
+		$stmt = $conn->prepare("UPDATE Contacts SET FirstName = ?, LastName=?, Phone= ?, Email= ?, Birthday=? WHERE ID= ?");
+		$stmt->bind_param("ssssss", $newFirstName, $newLastName, $newPhoneNumber, $newEmail, $ID, $birthDay);
 		$stmt->execute();
 		$stmt->close();
 		$conn->close();

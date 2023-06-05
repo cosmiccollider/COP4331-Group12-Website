@@ -6,6 +6,7 @@
 	$phone      = $inData["phone"];
     $email      = $inData["email"];
     $userID     = $inData["userID"];
+	$birthDay	= $inData["birthDay"];
 
     $conf = json_decode(file_get_contents('conf.json'), true);
     $conn = new mysqli($conf['hostname'], $conf['username'], $conf['password'], $conf['database']);
@@ -16,8 +17,8 @@
 	}
 	else
 	{
-			$stmt = $conn->prepare("INSERT INTO Contacts (FirstName, LastName, Phone, Email, UserID) VALUES(?,?,?,?,?)");
-			$stmt->bind_param("sssss", $firstName, $lastName, $phone, $email, $userID);
+			$stmt = $conn->prepare("INSERT INTO Contacts (FirstName, LastName, Phone, Email, UserID, Birthday) VALUES(?,?,?,?,?,?)");
+			$stmt->bind_param("sssss", $firstName, $lastName, $phone, $email, $userID, $birthDay);
 			$stmt->execute();
 			$stmt->close();
 			$conn->close();
