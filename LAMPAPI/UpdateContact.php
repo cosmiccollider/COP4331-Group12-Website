@@ -9,8 +9,9 @@
 	$ID                 = $inData["ID"];
 	$newBirthDay		= $inData["birthDay"];
 
-
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
+	$conf = json_decode(file_get_contents('conf.json'), true);
+    $conn = new mysqli($conf['hostname'], $conf['username'], $conf['password'], $conf['database']);
+	//$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
