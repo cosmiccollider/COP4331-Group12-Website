@@ -138,8 +138,6 @@ function doLogin()
 	}
 }
 
-
-
 function doLogout()
 {
 	userId = 0;
@@ -149,20 +147,32 @@ function doLogout()
 	window.location.href = "index.html";
 }
 
+function registerFirstName(){
+
+}
+
+function registerLastName(){
+
+}
+
+
 function doRegister()
 {
 	userId = 0;
 	firstName = "";
 	lastName = "";
 
-	let username = document.getElementById("registerUsername").value;
-	let password = document.getElementById("registerPassword").value;
-	let confirm = document.getElementById("confirmPassword").value;
-	let usernameError = document.getElementById("registerUsernameError");
-	let passwordError = document.getElementById("registerPasswordError");
-	let confirmError = document.getElementById("confirmPasswordError");
+	let username 	= document.getElementById("registerUsername").value;
+	let firstname 	= document.getElementById("registerFirstName").value;
+	let lastname 	= document.getElementById("registerLastName").value;
+	let password 	= document.getElementById("registerPassword").value;
+	let confirm 	= document.getElementById("confirmPassword").value;
+	let usernameError 	= document.getElementById("registerUsernameError");
+	let passwordError 	= document.getElementById("registerPasswordError");
+	let confirmError 	= document.getElementById("confirmPasswordError");
 
 	// Validate that all fields have correct input data
+
 
 	// Check in sequential order that no fields were left empty
 	if (username == "")
@@ -189,9 +199,37 @@ function doRegister()
 		return;
 	}
 
-	goContacts(); // DEBUG
 
-	// Do Register
+
+	// Register User
+	let tmp = {firstName:firstname, lastName:lastname, username:username, password:password};
+	let jsonPayload = JSON.stringify( tmp );
+	let url = urlBase + '/Register.' + extension;
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				let jsonObject = JSON.parse(xhr.responseText);
+				userId = jsonObject.results[0].ID;
+
+				firstName 	= firstname;
+				lastName 	= lastname;
+				saveCookie();
+				goContacts();
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		//document.getElementById("addContactResult").innerHTML = err.message;
+	}
+
 }
 
 function registerPassword()
@@ -364,6 +402,11 @@ function saveCookie()
 
 // ----- Action Functions -----
 
+function onContactsLoad(){
+	readCookie();
+	document.getElementById("username").innerHTML = firstName + " " + lastName;
+}
+
 function addContact()
 {
 	readCookie();
@@ -372,7 +415,7 @@ function addContact()
 	let last 		= document.getElementById("lastName").value;
 	let email 		= document.getElementById("email").value;
 	let phone 		= document.getElementById("phoneNumber").value;
-	let birthday 	= document.getElementById("birthday").value;
+	//let birthday 	= document.getElementById("birthday").value;
 
 	// Validate first name isn't empty (last name can be empty)
 
@@ -382,14 +425,14 @@ function addContact()
 
 	// Validate birthday is XX/XX/XXXX (can be empty)
 
-	goContacts(); // DEBUG
+	//goContacts(); // DEBUG
 
 	// Add Contact
 
-	let newContact = document.getElementById("contactText").value;
-	document.getElementById("addContactResult").innerHTML = "";
+	//let newContact = document.getElementById("contactText").value;
+	//document.getElementById("addContactResult").innerHTML = "";
 
-	let tmp = {contact:newContact,userId,userId};
+	let tmp = {firstName:first, lastName:last, phone:phone, email:email, userID:userId};
 	let jsonPayload = JSON.stringify( tmp );
 	let url = urlBase + '/AddContact.' + extension;
 	let xhr = new XMLHttpRequest();
@@ -401,14 +444,15 @@ function addContact()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				document.getElementById("addContactResult").innerHTML = "Contact has been added";
+				goContacts();
+				//document.getElementById("addContactResult").innerHTML = "Contact has been added";
 			}
 		};
 		xhr.send(jsonPayload);
 	}
 	catch(err)
 	{
-		document.getElementById("addContactResult").innerHTML = err.message;
+		//document.getElementById("addContactResult").innerHTML = err.message;
 	}
 }
 

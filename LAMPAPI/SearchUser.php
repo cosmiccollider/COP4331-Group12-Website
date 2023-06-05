@@ -6,35 +6,43 @@
 	$searchResults = "";
 	$searchCount = 0;
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
-	if ($conn->connect_error)
+    $conf = json_decode(file_get_contents('conf.json'), true);
+    $conn = new mysqli($conf['hostname'], $conf['username'], $conf['password'], $conf['database']);
+
+    if ($conn->connect_error)
 	{
 		returnWithError( $conn->connect_error );
 	}
 	else
 	{
-		$stmt = $conn->prepare("SELECT * FROM Users WHERE Login= ?");
-		$stmt->bind_param("s", $inData["login"]);
+		$stmt = $conn->prepare("SELECT * FROM Users WHERE Login = ?");
+		$stmt->bind_param("s", $inData["username"]);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
-        // Fetch associative array
-		while($row = $result->fetch_assoc())
-		{
-			$searchCount++;
-		}
+        while($row = $result->fetch_assoc())
+        {
+            if( $searchCount > 0 )
+            {
+                $searchResults .= ",";
+            }
+            $searchCount++;
+            // $searchResults .= '"' . $row["FirstName"] . '"';
+            //"." means add
+            $searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "Login" : "' . $row["Login"]. '", "ID" : "' . $row["ID"]. '"}';
+        }
 
-		if( $searchCount == 0 )
-		{
-			returnWithInfo( "" );
-		}
-		else
-		{
-			returnWithError( "Username has been taken" );
-		}
+        if( $searchCount == 0 )
+        {
+            returnWithError( "No Records Found" );
+        }
+        else
+        {
+            returnWithInfo( $searchResults );
+        }
 
-		$stmt->close();
-		$conn->close();
+        $stmt->close();
+        $conn->close();
 	}
 
 	function getRequestInfo()
@@ -54,10 +62,10 @@
 		sendResultInfoAsJson( $retValue );
 	}
 
-	function returnWithInfo( $info )
+	function returnWithInfo( $searchResults )
 	{
-		$retValue = '{"Error": "' . $info . '"}';
-		sendResultInfoAsJson( $retValue );
+        $retValue = '{"results":[' . $searchResults . '],"error":""}';
+        sendResultInfoAsJson( $retValue );
 	}
 
 ?>

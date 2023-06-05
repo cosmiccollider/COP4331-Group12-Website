@@ -1,14 +1,15 @@
 <?php
 	$inData = getRequestInfo();
 	
-	$firstName = $inData["firstName"];
-    $lastName = $inData["lastName"];
-	$phone = $inData["phone"];
-    $email = $inData["email"];
-    $userID = $inData["userID"];
+	$firstName  = $inData["firstName"];
+    $lastName   = $inData["lastName"];
+	$phone      = $inData["phone"];
+    $email      = $inData["email"];
+    $userID     = $inData["userID"];
 
+    $conf = json_decode(file_get_contents('conf.json'), true);
+    $conn = new mysqli($conf['hostname'], $conf['username'], $conf['password'], $conf['database']);
 
-	$conn = new mysqli("localhost", "TheBeast", "WeLoveCOP4331", "COP4331");
 	if ($conn->connect_error)
 	{
 			returnWithError( $conn->connect_error );
@@ -20,7 +21,7 @@
 			$stmt->execute();
 			$stmt->close();
 			$conn->close();
-			returnWithError("");
+            returnWithError("");
 	}
 
 	function getRequestInfo()

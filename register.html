@@ -18,6 +18,10 @@
 
             <input type="text" class="inputText" id="registerUsername" oninput="clearError(this); registerUsername();" onkeydown="keyInput(this);" placeholder="Username"/>
             <span class="error" id="registerUsernameError"></span>
+            <input type="text" class="inputText" id="registerFirstName" oninput="clearError(this); registerFirstName();" onkeydown="keyInput(this);" placeholder="First Name"/>
+            <span class="error" id="registerFirstNameError"></span>
+            <input type="text" class="inputText" id="registerLastName" oninput="clearError(this); registerLastName();" onkeydown="keyInput(this);" placeholder="Last Name"/>
+            <span class="error" id="registerLastNameError"></span>
             <input type="password" class="inputText" id="registerPassword" oninput="clearError(this); registerPassword();" onkeydown="keyInput(this);" placeholder="Password"/>
             <span class="material-symbols-rounded passwordVisibility" id="registerVisibility" title="Show Password" onclick="toggleVisibility(this);">visibility</span>
             <span class="error" id="registerPasswordError"></span>
