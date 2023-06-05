@@ -30,7 +30,7 @@
 			$searchCount++;
 			// $searchResults .= '"' . $row["FirstName"] . '"';
 			//"." means add
-			$searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "Phone" : "' . $row["Phone"]. '", "Email" : "' . $row["Email"]. '", "UserID" : "' . $row["UserID"].'", "ID" : "' . $row["ID"]. '", "Birthday" : "' .$row["Birthday"]. '"}';
+			$searchResults .= '{"FirstName" : "' . $row["FirstName"]. '", "LastName" : "' . $row["LastName"]. '", "Phone" : "' . $row["Phone"]. '", "Email" : "' . $row["Email"]. '", "UserID" : "' . $row["UserID"].'", "ID" : "' . $row["ID"]. '", "Birthday" : "' . $row["Birthday"]. '"}';
 		}
 
 		if( $searchCount == 0 )
