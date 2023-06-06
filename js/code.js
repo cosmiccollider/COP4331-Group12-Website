@@ -159,6 +159,7 @@ function doRegister()
 	let usernameError = document.getElementById("registerUsernameError");
 	let firstNameError = document.getElementById("registerFirstNameError");
 	let lastNameError = document.getElementById("registerLastNameError");
+	let passwordError = document.getElementById("registerPasswordError");
 	let confirmError = document.getElementById("confirmPasswordError");
 	
 	// Validate that all fields have correct input data
@@ -168,6 +169,16 @@ function doRegister()
 	{
 		usernameError.innerHTML = "Invalid username";
 		usernameError.style.display = "inline-block";
+	}
+	else if (firstname == "")
+	{
+		firstNameError.innerHTML = "Invalid first name";
+		firstNameError.style.display = "inline-block";
+	}
+	else if (lastname == "")
+	{
+		lastNameError.innerHTML = "Invalid last name";
+		lastNameError.style.display = "inline-block";
 	}
 	else if (password == "")
 	{
@@ -182,6 +193,8 @@ function doRegister()
 
 	// Check if there are any active errors still being displayed
 	if (usernameError.style.display == "inline-block"
+	|| firstNameError.style.display == "inline-block"
+	|| lastNameError.style.display == "inline-block"
 	|| passwordError.style.display == "inline-block"
 	|| confirmError.style.display == "inline-block")
 	{
@@ -221,12 +234,14 @@ function doRegister()
 
 function registerFirstName()
 {
-	//
+	let firstname = document.getElementById("registerFirstName").value;
+	let firstNameError = document.getElementById("registerFirstNameError");
 }
 
 function registerLastName()
 {
-	//
+	let lastname = document.getElementById("registerLastName").value;
+	let lastNameError = document.getElementById("registerLastNameError");
 }
 
 function registerPassword()
