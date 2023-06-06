@@ -45,7 +45,8 @@ body
 button
 {
     background: transparent;
-    border: none;
+    /*border: none;*/
+    outline: 1px solid transparent;
     border-color: transparent;
     border-radius: 5px;
     color: #ffffff;
