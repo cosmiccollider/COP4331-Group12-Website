@@ -461,9 +461,64 @@ function deleteContact()
 	//
 }
 
-function editContact()
+function finalizeEdit(val){
+
+	let firstName = document.getElementById("FirstNameInput_" + val).value;
+	let lastName = document.getElementById("LastNameInput_" + val).value;
+	let phone = document.getElementById("PhoneInput_" + val).value;
+	let email = document.getElementById("EmailInput_" + val).value;
+
+	document.getElementById("FirstName_" + val).innerHTML = firstName;
+	document.getElementById("LastName_" + val).innerHTML = lastName;
+	document.getElementById("Phone_" + val).innerHTML = phone;
+	document.getElementById("Email_" + val).innerHTML = email;
+
+	let tmp = {firstName:firstName, lastName:lastName, phone:phone, email:email, ID:val, birthDay:0};
+	let jsonPayload = JSON.stringify( tmp );
+	let url = urlBase + '/UpdateContact.' + extension;
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				//document.getElementById("addContactResult").innerHTML = "Contact has been added";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		//document.getElementById("addContactResult").innerHTML = err.message;
+	}
+
+
+
+	document.getElementById("EditButton_" + val).setAttribute("onclick", "editContact(" + val + ");");
+}
+
+function editContact(val)
 {
-	//
+	let contactDiv = document.getElementById(val);
+	let firstName = document.getElementById("FirstName_" + val).innerHTML;
+	let lastName = document.getElementById("LastName_" + val).innerHTML;
+	let phone = document.getElementById("Phone_" + val).innerHTML;
+	let email = document.getElementById("Email_" + val).innerHTML;
+
+	document.getElementById("FirstName_" + val).innerHTML =
+		'<input type="text" class="editContact" id="FirstNameInput_' + val + '" ' + 'value="' + firstName + '"/>';
+	document.getElementById("LastName_" + val).innerHTML =
+		'<input type="text" class="editContact" id="LastNameInput_' + val + '" ' + 'value="' + lastName + '"/>';
+	document.getElementById("Phone_" + val).innerHTML =
+		'<input type="text" class="editContact" id="PhoneInput_' + val + '" ' + 'value="' + phone + '"/>';
+	document.getElementById("Email_" + val).innerHTML =
+		'<input type="text" class="editContact" id="EmailInput_' + val + '" ' + 'value="' + email + '"/>';
+
+	document.getElementById("EditButton_" + val).setAttribute("onclick", "finalizeEdit(" + val + ");");
+
 }
 
 function searchContacts()
@@ -494,12 +549,14 @@ function searchContacts()
 				let jsonObject = JSON.parse( xhr.responseText );
 				for( let i= 0; i < jsonObject.results.length; i++ )
 				{
-					contactList += "<tr>" +
-						"<th>" + jsonObject.results[i].FirstName + "</th>" +
-						"<th>" + jsonObject.results[i].LastName + "</th>" +
-						"<th>" + jsonObject.results[i].Phone + "</th>" +
-						"<th>" + jsonObject.results[i].Email + "</th>" +
-						"<th>" + "<button type=\"button\" class=\"material-symbols-rounded\">add</button>" + "</th>" +
+					let id = jsonObject.results[i].ID;
+
+					contactList += '<tr id="' + id + '">' +
+						'<th id="FirstName_' + id + '">' + jsonObject.results[i].FirstName + "</th>" +
+						'<th id="LastName_' + id + '">' + jsonObject.results[i].LastName + "</th>" +
+						'<th id = "Phone_' + id + '">' + jsonObject.results[i].Phone + "</th>" +
+						'<th id = "Email_' + id + '">' + jsonObject.results[i].Email + "</th>" +
+						'<th>' + '<button type="button" ' + 'onclick="editContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-rounded">add</button>' + "</th>" +
 					"</tr>";
 				}
 
