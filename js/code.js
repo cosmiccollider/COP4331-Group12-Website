@@ -489,12 +489,35 @@ function addContact()
 	}
 }
 
-function deleteContact()
+function deleteContact(val)
 {
-	//
+	readCookie();
+
+	let tmp = {userID:userId, ID:val};
+	let jsonPayload = JSON.stringify( tmp );
+	let url = urlBase + '/DeleteContact.' + extension;
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
+	{
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				document.getElementById(val).innerHTML = "";
+				//document.getElementById("addContactResult").innerHTML = "Contact has been added";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		console.log(err.message);
+	}
 }
 
-function editContact()
+function editContact(val)
 {
 	let contactDiv = document.getElementById(val);
 	let firstName = document.getElementById("FirstName_" + val).innerHTML;
@@ -589,11 +612,12 @@ function searchContacts()
 					let id = jsonObject.results[i].ID;
 
 					contactList += '<tr id="' + id + '">' +
-						'<th id="FirstName_' + id + '">' + jsonObject.results[i].FirstName + "</th>" +
-						'<th id="LastName_' + id + '">' + jsonObject.results[i].LastName + "</th>" +
-						'<th id = "Phone_' + id + '">' + jsonObject.results[i].Phone + "</th>" +
-						'<th id = "Email_' + id + '">' + jsonObject.results[i].Email + "</th>" +
+						'<th class="contactInformation" id="FirstName_' + id + '">' + jsonObject.results[i].FirstName + "</th>" +
+						'<th class="contactInformation" id="LastName_' + id + '">' + jsonObject.results[i].LastName + "</th>" +
+						'<th class="contactInformation" id = "Phone_' + id + '">' + jsonObject.results[i].Phone + "</th>" +
+						'<th class="contactInformation" id = "Email_' + id + '">' + jsonObject.results[i].Email + "</th>" +
 						'<th>' + '<button type="button" ' + 'onclick="editContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-rounded">add</button>' + "</th>" +
+						'<th>' + '<button type="button" ' + 'onclick="deleteContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-rounded">-</button>' + "</th>" +
 					"</tr>";
 				}
 

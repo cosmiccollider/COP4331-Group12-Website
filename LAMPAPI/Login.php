@@ -18,7 +18,7 @@
 		// Prepare a SQL statement template and parameters for login and password
 		$stmt = $conn->prepare("SELECT ID, FirstName, LastName FROM Users WHERE Login=? AND Password =?");
 		// i - int, d - double, s - string, b - BLOB
-		$stmt->bind_param("ss", $inData["login"], $inData["password"]);
+		$stmt->bind_param("ss", $inData["username"], $inData["password"]);
 		$stmt->execute();
 		$result = $stmt->get_result();
 
