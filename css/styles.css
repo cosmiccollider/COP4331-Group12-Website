@@ -58,39 +58,6 @@ a:active
     color: #3366ff;
 }
 
-.confirmation-dialog {
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-    padding: 20px;
-    max-width: 300px;
-    margin: 0 auto;
-}
-
-  .confirmation-dialog h2 {
-    font-size: 18px;
-    margin-top: 0;
-}
-
-  .confirmation-dialog button {
-    background-color: #e53935;
-    border: none;
-    color: #fff;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-  .confirmation-dialog button.cancel {
-    background-color: #ccc;
-    margin-right: 10px;
-}
-
-
 /*
 button
 {

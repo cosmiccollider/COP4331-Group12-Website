@@ -546,7 +546,6 @@ function deleteContactConfirm(val)
 			if (this.readyState == 4 && this.status == 200)
 			{
 				document.getElementById(val).innerHTML = "";
-				//document.getElementById("addContactResult").innerHTML = "Contact has been added";
 			}
 		};
 		xhr.send(jsonPayload);
@@ -663,7 +662,7 @@ function searchContacts()
 						'<th class="contactInformation" id = "Phone_' + id + '">' + jsonObject.results[i].Phone + "</th>" +
 						'<th class="contactInformation" id = "Email_' + id + '">' + jsonObject.results[i].Email + "</th>" +
 						'<th>' + '<button type="button" ' + 'onclick="editContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-outlined">edit</button>' + "</th>" +
-						'<th>' + '<button type="button" ' + 'onclick="confirmDelete(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-outlined">person_remove</button>' + "</th>" +
+						'<th>' + '<button type="button" ' + 'onclick="deleteContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-outlined">person_remove</button>' + "</th>" +
 					"</tr>";
 				}
 
@@ -698,32 +697,3 @@ function toggleVisibility(field)
 		text.type = "password";
 	}
 }
-
-function confirmDelete(id) 
-{
-	var confirmationDialog = document.createElement("div");
-	confirmationDialog.className = "confirmation-dialog";
-
-	var message = document.createElement("h2");
-	message.textContent = "Are you sure you want to delete this?";
-
-	var deleteButton = document.createElement("button");
-	deleteButton.textContent = "Delete";
-	deleteButton.addEventListener("click", function() {
-		deleteContact(id)
-		confirmationDialog.remove();
-	});
-
-	var cancelButton = document.createElement("button");
-	cancelButton.textContent = "Cancel";
-	cancelButton.className = "cancel";
-	cancelButton.addEventListener("click", function() {
-		confirmationDialog.remove();
-	});
-
-	confirmationDialog.appendChild(message);
-	confirmationDialog.appendChild(deleteButton);
-	confirmationDialog.appendChild(cancelButton);
-
-	document.body.appendChild(confirmationDialog);
-  }
