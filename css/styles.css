@@ -19,6 +19,7 @@ body
   min-height: 100vh;
   background: var(--bg);
   background-image: url("Gradient.png"); 
+  background-size: cover;
 }
 
 @keyframes press{
