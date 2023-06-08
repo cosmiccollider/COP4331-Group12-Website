@@ -253,6 +253,7 @@ input[type="text"]:focus,input[type="password"]:focus
     padding-bottom: 5px;
     white-space: pre-line;
     width: 80%;
+    min-width: 190px;
 }
 
 .mainContent
@@ -308,6 +309,7 @@ input[type="text"]:focus,input[type="password"]:focus
     padding-bottom: 5px;
     white-space: pre-line;
     width: 50%;
+    min-width:120px;
 }
 
 #homeDiv {
