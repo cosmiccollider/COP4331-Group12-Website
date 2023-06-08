@@ -16,25 +16,26 @@
         <div class="mainContent" id="registerDiv">
             <span id="inner-title">Register</span>
 
-            <input type="text" class="inputText" id="registerUsername" oninput="clearError(this); registerUsername();" onkeydown="proceed(this);" placeholder="Username"/>
+            <input type="text" class="inputText" id="registerUsername" oninput="clearError(this); registerUsername();" onkeydown="keyInput(this);" placeholder="Username"/>
             <span class="error" id="registerUsernameError"></span>
-            <input type="text" class="inputText" id="registerFirstName" oninput="clearError(this); registerFirstName();" onkeydown="proceed(this);" placeholder="First Name"/>
+            <input type="text" class="inputText" id="registerFirstName" oninput="clearError(this); registerFirstName();" onkeydown="keyInput(this);" placeholder="First Name"/>
             <span class="error" id="registerFirstNameError"></span>
-            <input type="text" class="inputText" id="registerLastName" oninput="clearError(this); registerLastName();" onkeydown="proceed(this);" placeholder="Last Name"/>
+            <input type="text" class="inputText" id="registerLastName" oninput="clearError(this); registerLastName();" onkeydown="keyInput(this);" placeholder="Last Name"/>
             <span class="error" id="registerLastNameError"></span>
-            <input type="password" class="inputText" id="registerPassword" oninput="clearError(this); registerPassword();" onkeydown="proceed(this);" placeholder="Password"/>
+            <input type="password" class="inputText" id="registerPassword" oninput="clearError(this); registerPassword();" onkeydown="keyInput(this);" placeholder="Password"/>
             <span class="material-symbols-rounded passwordVisibility" id="registerVisibility" title="Show Password" onclick="toggleVisibility(this);">visibility</span>
             <span class="error" id="registerPasswordError"></span>
-            <input type="password" class="inputText" id="confirmPassword" oninput="clearError(this); confirmPassword();" onkeydown="proceed(this);" placeholder="Confirm Password"/>
+            <input type="password" class="inputText" id="confirmPassword" oninput="clearError(this); confirmPassword();" onkeydown="keyInput(this);" placeholder="Confirm Password"/>
             <span class="material-symbols-rounded passwordVisibility" id="confirmVisibility" title="Show Password" onclick="toggleVisibility(this);">visibility</span><br>
             <span class="error" id="confirmPasswordError"></span>
 
             <div id="buttonDiv">
-                <button type="button" id="cancelButton" onclick="goIndex();">Cancel</button>
+                <button type="button" class="mainButton" id="cancelButton" onclick="goIndex();">Cancel</button>
                 <button type="button" class="mainButton" id="registerButton" onclick="doRegister();">Register</button>
             </div>
 
             <div id="footerDiv">
+                <br>
                 <span id="linkPretext">Already have an account?</span>
                 <a id="linkText" href="login.html">Log In</a><br>
             </div>

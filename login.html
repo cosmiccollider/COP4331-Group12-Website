@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Log In</title>
+        <title>Login</title>
         <script src="js/code.js"></script>
         <link href="css/styles.css" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
@@ -16,21 +16,23 @@
         <div class="mainContent" id="loginDiv">
             <span id="inner-title">Log In</span>
 
-            <input type="text" class="inputText" id="loginUsername" oninput="clearError(this);" onkeydown="proceed(this);" placeholder="Username"/>
+            <input type="text" class="inputText" id="loginUsername" oninput="clearError(this);" onkeydown="keyInput(this);" placeholder="Username"/>
             <span class="error" id="loginUsernameError"></span>
-            <input type="password" class="inputText" id="loginPassword" oninput="clearError(this);" onkeydown="proceed(this);" placeholder="Password"/>
+            <input type="password" class="inputText" id="loginPassword" oninput="clearError(this);" onkeydown="keyInput(this);" placeholder="Password"/>
             <span class="material-symbols-rounded passwordVisibility" id="loginVisibility" title="Show Password" onclick="toggleVisibility(this);">visibility</span><br>
             <span class="error" id="loginPasswordError"></span>
             
             <div id="buttonDiv">
-                <button type="button" id="cancelButton" onclick="goIndex();">Cancel</button>
+                <button type="button" class="mainButton" id="cancelButton" onclick="goIndex();">Cancel</button>
                 <button type="button" class="mainButton" id="loginButton" onclick="doLogin();">Log In</button>
+                <br></br>
             </div>
 
             <div id="footerDiv">
-                <span id="linkPretext">Don't have an account?</span>
-                <a id="linkText" href="register.html">Register</a><br>
+                <span id="linkPretext" >Don't have an account?</span>
+                <a id="linkText" href="register.html" >Register</a><br>
             </div>
         </div>
+
     </body>
 </html>
