@@ -563,6 +563,8 @@ function editContact(val)
 	let phone = document.getElementById("Phone_" + val).innerHTML;
 	let email = document.getElementById("Email_" + val).innerHTML;
 
+	document.getElementById("Email_" + val).removeAttribute("href");
+
 	document.getElementById("FirstName_" + val).innerHTML =
 		'<input type="text" class="editContact" id="FirstNameInput_' + val + '" ' + 'value="' + firstName + '"/>';
 	document.getElementById("LastName_" + val).innerHTML =
@@ -611,6 +613,7 @@ function finalizeEdit(val)
 	}
 
 	document.getElementById("EditButton_" + val).setAttribute("onclick", "editContact(" + val + ");");
+	document.getElementById("Email_" + val).setAttribute("href", "mailto:" + email);
 }
 
 function onContactsLoad()
@@ -659,7 +662,7 @@ function searchContacts()
 						'<th class="contactInformation" id="FirstName_' + id + '">' + jsonObject.results[i].FirstName + "</th>" +
 						'<th class="contactInformation" id="LastName_' + id + '">' + jsonObject.results[i].LastName + "</th>" +
 						'<th class="contactInformation" id = "Phone_' + id + '">' + jsonObject.results[i].Phone + "</th>" +
-						'<th class="contactInformation" id = "Email_' + id + '">' + jsonObject.results[i].Email + "</th>" +
+						'<th class="contactInformation"><a id="Email_' + id + '" href="mailto:' + jsonObject.results[i].Email + '">' + jsonObject.results[i].Email + "</a></th>" +
 						'<th>' + '<button type="button" ' + 'onclick="editContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-outlined">edit</button>' + "</th>" +
 						'<th>' + '<button type="button" ' + 'onclick="deleteContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-outlined">person_remove</button>' + "</th>" +
 					"</tr>";
