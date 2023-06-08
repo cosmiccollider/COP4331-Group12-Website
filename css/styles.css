@@ -130,6 +130,7 @@ button {
   margin-top:10px;
   margin-bottom:10px;
 }
+
 .mainButton {
     font-weight: 600;
     color: var(--text);
@@ -174,9 +175,6 @@ button {
         box-shadow: 0 0 0 2px var(--pink-border), 0 0 var(--pink-shadow);
         transform: translate3d(0, 0, -1em);
       }
-    
-
-
 
 input[type="text"],input[type="password"]
 {
@@ -192,7 +190,6 @@ input[type="text"],input[type="password"]
     transition: 0.1s;
     width: 80%;
 }
-
 
 input[class="editContact"]
 {
@@ -232,7 +229,6 @@ input[type="text"]:focus,input[type="password"]:focus
     width: 80%;
 }
 
-
 .mainContent
 {
     background: #6d5656;
@@ -263,22 +259,24 @@ input[type="text"]:focus,input[type="password"]:focus
 
 #addContactButton
 {
-    background: #33cc00;
+    background: #ffffff;
+    border-radius: 5px;
     font-size: 40px;
     height: 50px;
+    margin-right: 10px;
     transition: 0.2s;
     width: 50px;
 }
 
 #addContactButton:hover
 {
-    background: #339900;
+    background: #f9c4d2;
     transform: rotate(90deg);
 }
 
 #addContactButton:active
 {
-    background: #336600;
+    background: #b18597;
     transform: rotate(90deg);
 }
 
