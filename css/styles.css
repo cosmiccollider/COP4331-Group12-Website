@@ -338,7 +338,8 @@ input[type="text"]:focus,input[type="password"]:focus
     'FILL' 1,
     'wght' 700,
     'GRAD' 0,
-    'opsz' 48
+    'opsz' 48;
+    vertical-align: middle;
 }
 
 .material-symbols-outlined {
