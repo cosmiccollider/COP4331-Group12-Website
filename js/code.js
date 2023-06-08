@@ -358,6 +358,26 @@ function phoneNumber()
 	}
 }
 
+function emailAddress()
+{
+	let emailField = document.getElementById("email");
+	let emailError = document.getElementById("emailError");
+	let emailString = email.value;
+	let emailSplit = emailString.split('@');
+
+	if (emailString.length > 0 && emailSplit.length != 2)
+	{
+		emailError.innerHTML = "Invalid email address";
+		emailError.style.display = "inline-block";
+	} else {
+		let domain = emailSplit[1].split('.');
+		if (domain.length != 2 || domain[1].length < 2){
+			emailError.innerHTML = "Invalid email address";
+			emailError.style.display = "inline-block";
+		}
+	}
+}
+
 // Allows for logging in and registering by pressing "Enter" on the final input field
 // On other input fields, allows for moving focus to the next input field
 function proceed(field)

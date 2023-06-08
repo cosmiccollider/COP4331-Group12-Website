@@ -19,7 +19,7 @@
                 <span class="error" id="firstNameError"></span>
                 <input type="text" class="inputText" id="lastName" oninput="clearError(this);" onkeydown="proceed(this);" placeholder="Last Name"/>
                 <span class="error" id="lastNameError"></span>
-                <input type="text" class="inputText" id="email" oninput="clearError(this);" onkeydown="proceed(this);" placeholder="Email"/>
+                <input type="text" class="inputText" id="email" oninput="clearError(this); emailAddress();" onkeydown="proceed(this);" placeholder="Email"/>
                 <span class="error" id="emailError"></span>
                 <input type="text" class="inputText" id="phoneNumber" oninput="clearError(this); phoneNumber();" onkeydown="proceed(this);" placeholder="Phone"/>
                 <span class="error" id="phoneNumberError"></span>
