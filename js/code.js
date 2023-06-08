@@ -514,6 +514,23 @@ function addContact()
 
 function deleteContact(val)
 {
+	let popup = document.getElementById("confirmDeletePopup");
+	popup.style.display = "show";
+
+	document.getElementById("cancelDelete").addEventListener("click", function()
+	{
+		popup.style.display = "hide";
+	});
+
+	document.getElementById("confirmDelete").addEventListener("click", function()
+	{
+		deleteContactConfirm(val);
+		popup.style.display = "hide";
+	});
+}
+
+function deleteContactConfirm(val)
+{
 	readCookie();
 
 	let tmp = {userID:userId, ID:val};

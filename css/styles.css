@@ -281,6 +281,32 @@ input[type="text"]:focus,input[type="password"]:focus
     overflow: hidden;
 }
 
+.popup
+{
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    /* display: none; */
+    height: 100%;
+    left: 0;
+    overflow: auto;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+.popupContent
+{
+    background: #6d5656;
+    border: solid;
+    border-width: 1px;
+    border-color: #4d4d4d;
+    border-radius: 10px;
+    margin: 15% auto;
+    padding: 30px;
+    width: 30%;
+}
+
 .success
 {
     background: rgba(51, 255, 51, .5);
