@@ -514,18 +514,17 @@ function addContact()
 
 function deleteContact(val)
 {
-	let popup = document.getElementById("confirmDeletePopup");
-	popup.style.display = "show";
+	document.getElementById("confirmDeletePopup").style.display = "block";
 
 	document.getElementById("cancelDelete").addEventListener("click", function()
 	{
-		popup.style.display = "hide";
+		document.getElementById("confirmDeletePopup").style.display = "none";
 	});
 
 	document.getElementById("confirmDelete").addEventListener("click", function()
 	{
 		deleteContactConfirm(val);
-		popup.style.display = "hide";
+		document.getElementById("confirmDeletePopup").style.display = "none";
 	});
 }
 
