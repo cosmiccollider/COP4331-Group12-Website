@@ -10,12 +10,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
     </head>
 
-    <body>
+    <body onload="logoutSuccess();">
         <h1 id="title">Contact Manager</h1>
 
         <div class="bordContent" id="marginlessBorder">
             <div class="mainContent" id="homeDiv">
                 <span id="inner-title">Home</span>
+                <span class="success" id="logoutSuccess"></span><br>
                 <button type="button" class="mainButton" id="registerButton" onclick="goRegister();">Register</button>
                 <button type="button" class="mainButton" id="loginButton" onclick="goLogin();">Log In</button>
             </div>
