@@ -358,7 +358,7 @@ input[type="text"]:focus,input[type="password"]:focus
     margin-top: 30px;
     text-align: left;
 
-    background: #333333;
+    background: #6d5656;    /*333333;*/
     border: solid;
     border-width: 1px;
     border-color: #4d4d4d;
