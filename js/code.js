@@ -272,14 +272,12 @@ function registerPassword()
 
 function registerUsername()
 {
-	readCookie();
-
 	let username = document.getElementById("registerUsername").value;
 	let usernameError = document.getElementById("registerUsernameError");
-
-	let tmp = {userID:userId, ID:val};
+	let tmp = {username:username};
 	let jsonPayload = JSON.stringify( tmp );
 	let url = urlBase + '/SearchUser.' + extension;
+
 	let xhr = new XMLHttpRequest();
 	xhr.open("POST", url, true);
 	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
@@ -289,8 +287,11 @@ function registerUsername()
 		{
 			if (this.readyState == 4 && this.status == 200)
 			{
-				usernameError.innerHTML = username + " already exists";
-				usernameError.style.display = "inline-block";
+				let jsonObject = JSON.parse( xhr.responseText );
+				if (jsonObject.results.length > 0) {
+					usernameError.innerHTML = username + " already exists";
+					usernameError.style.display = "inline-block";
+				}
 			}
 		};
 		xhr.send(jsonPayload);

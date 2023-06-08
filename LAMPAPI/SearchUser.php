@@ -34,7 +34,7 @@
 
         if( $searchCount == 0 )
         {
-            returnWithError( "No Records Found" );
+            returnWithNotFound( $searchResults);
         }
         else
         {
@@ -67,5 +67,9 @@
         $retValue = '{"results":[' . $searchResults . '],"error":""}';
         sendResultInfoAsJson( $retValue );
 	}
-
+    function returnWithNotFound($searchResults)
+    {
+        $retValue = '{"results":[' . $searchResults . '],"error":""}';
+        sendResultInfoAsJson( $retValue );
+    }
 ?>
