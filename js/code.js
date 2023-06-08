@@ -570,7 +570,7 @@ function editContact(val)
 	document.getElementById("LastName_" + val).innerHTML =
 		'<input type="text" onkeydown="editProceed(' + val + ');" class="editContact" id="LastNameInput_' + val + '" ' + 'value="' + lastName + '"/>';
 	document.getElementById("Phone_" + val).innerHTML =
-		'<input type="text" oninput="phoneNumber(this);" onkeydown="editProceed(' + val + ');" class="editContact" id="PhoneInput_' + val + '" ' + 'value="' + phone + '"/>';
+		'<input type="text" oninput="phoneValidate(' + val + ');" onkeydown="editProceed(' + val + ');" class="editContact" id="PhoneInput_' + val + '" ' + 'value="' + phone + '"/>';
 	document.getElementById("Email_" + val).innerHTML =
 		'<input type="text" oninput="emailValidate(' + val + ');" onkeydown="editProceed(' + val + ');" class="editContact" id="EmailInput_' + val + '" ' + 'value="' + email + '"/>';
 
@@ -584,6 +584,33 @@ function editProceed(val){
 }
 
 function validPhone(str){
+	let phoneValue = str.replace(/\D/g, "");
+	console.log(phoneValue.length);
+	return !(phoneValue.length != 0 && phoneValue.length != 7 && phoneValue.length != 10);
+}
+
+function phoneValidate(val){
+	let phoneField = document.getElementById("PhoneInput_" + val);
+	let phone = phoneField.value;
+	let phoneValue = phone.replace(/\D/g, "");
+	if (phoneValue.length >= 8)
+	{
+		phoneField.value = "(" + phoneValue.slice(0, 3) + ") " + phoneValue.slice(3, 6) + "-" + phoneValue.slice(6, 10);
+	}
+	else if (phoneValue.length >= 4 && phoneValue.length <= 7)
+	{
+		phoneField.value = phoneValue.slice(0, 3) + "-" + phoneValue.slice(3);
+	}
+	else
+	{
+		phoneField.value = phoneValue.slice(0, 3);
+	}
+
+	if (!validPhone(phoneField.value)){
+		document.getElementById("PhoneInput_" + val).setAttribute("class", "editContactInvalid");
+		return false;
+	}
+	document.getElementById("PhoneInput_" + val).setAttribute("class", "editContact");
 	return true;
 }
 
@@ -624,10 +651,12 @@ function finalizeEdit(val)
 	let phoneValidity = validPhone(phone);
 	let emailValidity = validEmail(email);
 
+	if (!emailValidity){
+		document.getElementById("Email_" + val).setAttribute("class", "editContactInvalid");
+	}
 	if (!phoneValidity){
 		document.getElementById("Phone_" + val).setAttribute("class", "editContactInvalid");
 	}
-
 	if (!phoneValidity || !emailValidity){
 		return;
 	}
