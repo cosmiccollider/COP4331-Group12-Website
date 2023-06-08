@@ -236,9 +236,85 @@ input[type="text"]:focus,input[type="password"]:focus
     border-width: 1px;
     border-color: #4d4d4d;
     border-radius: 10px;
+    padding: 30px;
+    
+    position: relative;
+    overflow: hidden;
+}
+
+#homeDiv {
+    margin-left: 0%;
+    margin-right: 0%;
+    position: relative;
+    border-radius: 0px;
+}
+
+#addDiv {
+    margin-left: 0%;
+    margin-right: 0%;
+    position: relative;
+    border-radius: 0px;
+}
+
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* These are the colors used for the animation and there assigned names */
+:root {
+  --color1: #00b594;
+  --color2: #00cc6d;
+  --color3: #33cc00;
+}
+  
+@keyframes rotation {
+    0% {
+      --gradient-angle: 0deg;
+    }
+    100% {
+      --gradient-angle: 360deg;
+    }
+}
+  
+.bordContent {
     margin-left: 15%;
     margin-right: 15%;
-    padding: 30px;
+    position: relative;
+}
+
+#marginlessBorder {
+    margin-left: 0%;
+    margin-right: 0%;
+    position: relative;
+}
+
+#marginlessBorder::before,
+#marginlessBorder::after {
+    border-radius: 0px;
+}
+
+.bordContent::before,
+.bordContent::after {
+    content: "";
+    position: absolute;
+    inset: -0.25rem;    /* controls the size of the shape */
+    z-index: -1;        /* puts shape behind the mainContent*/
+    background: conic-gradient(
+      from var(--gradient-angle),
+      var(--color1),
+      var(--color2),
+      var(--color3),
+      var(--color2),
+      var(--color1)
+    );
+    border-radius: 10px;
+    animation: rotation 7s linear infinite; /* controls the speed of the animation */
+}
+  
+.bordContent::after {
+    filter: blur(0.5rem); /* controls how blurry the glow is */
 }
 
 /* See https://fonts.google.com/icons for information on settings */
@@ -250,10 +326,17 @@ input[type="text"]:focus,input[type="password"]:focus
     'opsz' 48
 }
 
+.icon-container {
+    width: 0px;
+    height: 20px;
+    display: inline-block;
+    position: relative;
+}
+
 .passwordVisibility
 {
     cursor: pointer;
-    margin-left: -34px;
+    margin-left: -50px;
     user-select: none;
 }
 
@@ -289,7 +372,7 @@ input[type="text"]:focus,input[type="password"]:focus
 
 #confirmPassword
 {
-    margin-left: -10px;
+    margin-left: +4px;
 }
 
 #footerDiv
@@ -324,12 +407,12 @@ input[type="text"]:focus,input[type="password"]:focus
 
 #loginPassword
 {
-    margin-left: -10px;
+    margin-left: +4px;
 }
 
 #registerPassword
 {
-    margin-left: -10px;
+    margin-left: +4px;
 }
 
 #searchContacts

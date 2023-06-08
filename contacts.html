@@ -21,15 +21,17 @@
     <body onload="onContactsLoad();">
         <h1 id="title">Contact Manager</h1>
 
-        <div class="mainContent" id="loggedInDiv">
-            <span id="username">Username</span>
-            <button type="button" class="mainButton" id="logoutButton" onclick="doLogout();">Log Out</button>
-        </div>
+        <div class="bordContent" id="bordCon">
+            <div class="mainContent" id="loggedInDiv">
+                <span id="username">Username</span>
+                <button type="button" class="mainButton" id="logoutButton" onclick="doLogout();">Log Out</button>
+            </div>
 
-        <div class="mainContent" id="searchDiv">
-            <button type="button" class="material-symbols-rounded" id="addContactButton" title="Add Contact" onclick="goAdd();">add</button>
-            <input type="text" class="inputText" id="searchContacts" oninput="searchContacts()" placeholder="Search Contacts"/>
-            <span id="searchContactsResult"></span>
+            <div class="mainContent" id="searchDiv">
+                <button type="button" class="material-symbols-rounded" id="addContactButton" title="Add Contact" onclick="goAdd();">add</button>
+                <input type="text" class="inputText" id="searchContacts" oninput="searchContacts()" placeholder="Search Contacts"/>
+                <span id="searchContactsResult"></span>
+            </div>
         </div>
         <div id="contactTable">
             <table class="mainContent" id="contactList"></table>
