@@ -107,6 +107,11 @@ button:active
     --dark-pink: #f9c4d2;   /*f9c4d2;*/
     --pink-border: #b18597; /*b18597;*/
     --pink-shadow: #5e4746; 
+
+    /* animation colors */
+    --color1: #00b594;
+    --color2: #00cc6d;
+    --color3: #33cc00;
 }
 
 
@@ -262,13 +267,6 @@ input[type="text"]:focus,input[type="password"]:focus
   inherits: false;
 }
 
-/* These are the colors used for the animation and there assigned names */
-:root {
-  --color1: #00b594;
-  --color2: #00cc6d;
-  --color3: #33cc00;
-}
-  
 @keyframes rotation {
     0% {
       --gradient-angle: 0deg;
