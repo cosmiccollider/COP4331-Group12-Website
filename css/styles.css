@@ -1,12 +1,31 @@
 *
 {
     font-family: 'Ubuntu', sans-serif;
-    font-size: 0px;
+    font-size: 20px; 
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
+body 
+{
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  min-height: 100vh;
+  background: var(--bg);
+  background-image: url("Gradient.png"); 
+}
+
+@keyframes press{
+    from {top: 0px}
+    to {top: 2px}
+}
+/* hyperlink*/
 a
 {
     border: none;
@@ -18,34 +37,33 @@ a
     outline-color: transparent;
     text-decoration: none;
     transition: 0.1s;
+    position: relative;
+    animation-duration: 0.15s;
+    animation-fill-mode: forwards;
 }
-
 a:focus-visible
 {
     outline: solid;
-    outline-color: #3399ff;
+    outline-color: #5aa6f3;
     outline-width: 2px;
 }
-
 a:hover
 {
-    color: #3399ff;
+    color: #3997f5;
+    animation-name: press;
 }
-
 a:active
 {
     color: #3366ff;
 }
 
-body 
-{
-    background: #1a1a1a;
-}
-
+/*
 button
 {
     background: transparent;
-    border: none;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    overflow-wrap: break-word;  
+    outline: 1px solid transparent;
     border-color: transparent;
     border-radius: 5px;
     color: #ffffff;
@@ -56,7 +74,8 @@ button
     outline: none;
     outline-color: transparent;
     transition: 0.1s;
-    width: 45%;
+    width: 20%;
+    min-width: 150px;
 }
 
 button:focus-visible{
@@ -75,14 +94,112 @@ button:active
 {
     border: solid;
     border-color: #336600;
+} */
+
+@import url('https://fonts.googleapis.com/css?family=Rubik:700&display=swap');
+:root
+{
+    /* buttons */
+    --bg: #fff;
+    --text: #382b22;
+    --light-pink: #fff0f0;  /*fff0f0;*/
+    --pink: #ffe9e9;        /*ffe9e9;*/
+    --dark-pink: #f9c4d2;   /*f9c4d2;*/
+    --pink-border: #b18597; /*b18597;*/
+    --pink-shadow: #5e4746; 
 }
+
+
+* {
+  box-sizing: border-box;
+}
+*.box-sizing:before, *.box-sizing:after {
+   box-sizing: border-box;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  font-size: inherit;
+  font-family: inherit;
+  margin-top:10px;
+  margin-bottom:10px;
+}
+.mainButton {
+    font-weight: 600;
+    color: var(--text);
+    text-transform: none;
+    padding: 0.75em 1em;
+    background: var(--light-pink);
+    border: 2px solid var(--pink-border);
+    border-radius: 0.5em;
+    transform-style: preserve-3d;
+    transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), background 150ms cubic-bezier(0, 0, 0.58, 1);
+}
+    .mainButton:before {
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--dark-pink);
+      border-radius: inherit;
+      box-shadow: 0 0 0 2px var(--pink-border), 0 0.625em 0 0 var(--pink-shadow);
+      transform: translate3d(0, 0.5em, -1em); /*button dimemsion*/
+      transition: transform 150ms cubic-bezier(0, 0, 0.58, 1), box-shadow 150ms cubic-bezier(0, 0, 0.58, 1);
+    }
+    .mainButton:hover {
+      background: var(--pink);
+      transform: translate(0, 0.25em);
+    }
+      .mainButton:hover:before {
+        box-shadow: 0 0 0 2px var(--pink-border), 0 0.45em 0 0 var(--pink-shadow);
+        transform: translate3d(0, 0.25em, -1em);
+      }
+    
+      .mainButton:active {
+      background: var(--pink);
+      transform: translate(0em, 0.75em);
+      }
+      
+      .mainButton:active:before {
+        box-shadow: 0 0 0 2px var(--pink-border), 0 0 var(--pink-shadow);
+        transform: translate3d(0, 0, -1em);
+      }
+    
+
+
 
 input[type="text"],input[type="password"]
 {
     background: #ffffff;
     border: none;
     border-radius: 5px;
-    font-size: 30px;
+    font-size: 20px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    outline: none;
+    outline-color: transparent;
+    transition: 0.1s;
+    width: 80%;
+}
+
+
+input[class="editContact"]
+{
+    background: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
     height: 50px;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -97,28 +214,6 @@ input[type="text"]:focus,input[type="password"]:focus
     outline: solid;
     outline-color: #3399ff;
     outline-width: 4px;
-}
-
-*[class="contactInformation"]
-{
-    background: transparent;
-    border: none;
-    color: #ffffff;
-    font-size: 20px;
-    height: 40px;
-    transition: 0.1s;
-    width: 30%;
-}
-
-*[class="editContact"]
-{
-    background: transparent;
-    border: none;
-    color: #000000;
-    font-size: 20px;
-    height: 40px;
-    transition: 0.1s;
-    width: 30%;
 }
 
 .error
@@ -137,24 +232,10 @@ input[type="text"]:focus,input[type="password"]:focus
     width: 80%;
 }
 
-.mainButton
-{
-    background: #33cc00;
-}
-
-.mainButton:hover
-{
-    background: #339900;
-}
-
-.mainButton:active
-{
-    background: #336600;
-}
 
 .mainContent
 {
-    background: #333333;
+    background: #6d5656;
     border: solid;
     border-width: 1px;
     border-color: #4d4d4d;
@@ -212,13 +293,11 @@ input[type="text"]:focus,input[type="password"]:focus
     margin-left: -10px;
 }
 
-#contactList
+#contactsDiv
 {
-    width: 70%;
-    color: #ffffff;
-    font-size: 30px;
-    margin-top: 30px;
-    text-align: left;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    display: flex;
 }
 
 #footerDiv
@@ -232,7 +311,7 @@ input[type="text"]:focus,input[type="password"]:focus
     color: #ffffff;
     display: inline-block;
     font-size: 40px;
-    margin-top: 10px;
+    margin-top: 0px;
     margin-bottom: 10px;
     width: 100%;
 }
@@ -261,13 +340,6 @@ input[type="text"]:focus,input[type="password"]:focus
     margin-left: -10px;
 }
 
-#searchDiv
-{
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    display: flex;
-}
-
 #searchContacts
 {
     width: 90%;
@@ -278,12 +350,31 @@ input[type="text"]:focus,input[type="password"]:focus
     display: none;
 }
 
+#contactList
+{
+    width: 70%;
+    color: #ffffff;
+    font-size: 26px;
+    margin-top: 30px;
+    text-align: left;
+
+    background: #333333;
+    border: solid;
+    border-width: 1px;
+    border-color: #4d4d4d;
+    border-radius: 10px;
+    margin-left: 15%;
+    margin-right: 15%;
+    text-space: 40px;
+    padding: 30px;
+}
+
 #title 
 {
     color: #ffffff;
     font-size: 40px;
     margin-bottom: 30px;
-    margin-top: 30px;
+    margin-top: 30px; 
 }
 
 #username
@@ -295,3 +386,4 @@ input[type="text"]:focus,input[type="password"]:focus
     margin-bottom: 10px;
     width: 100%;
 }
+
