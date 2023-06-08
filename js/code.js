@@ -142,7 +142,18 @@ function doLogout()
 	firstName = "";
 	lastName = "";
 	document.cookie = "firstName= ; expires = Thu, 01 Jan 1970 00:00:00 GMT";
+	localStorage.setItem('logout', "true");
 	window.location.href = "index.html";
+}
+
+function logoutSuccess()
+{
+	if (localStorage.getItem('logout') === "true")
+	{
+		document.getElementById("logoutSuccess").innerHTML = "Successfully logged out";
+		document.getElementById("logoutSuccess").style.display = "inline-block";
+		localStorage.setItem('logout', "false");
+	}
 }
 
 function doRegister()
