@@ -67,36 +67,8 @@ function doLogin()
 	let usernameError = document.getElementById("loginUsernameError");
 	let passwordError = document.getElementById("loginPasswordError");
 	// var hash = md5(password);
-
-	// Placeholders
-	// let user = "user";
-	// let pass = "pass";
-
-	// if (username == "")
-	// {
-	// 	usernameError.innerHTML = "Invalid username";
-	// 	usernameError.style.display = "inline-block";
-	// 	return;
-	// }
 	
-	// if (username != user)
-	// {
-	// 	usernameError.innerHTML = "User not found"
-	// 	usernameError.style.display = "inline-block";
-	// 	return;
-	// }
-
-	// if (password != pass)
-	// {
-	// 	passwordError.innerHTML = "Incorrect password";
-	// 	passwordError.style.display = "inline-block";
-	// 	return;
-	// }
-
-	// goContacts(); // DEBUG
-
 	// Do Login
-
 	let tmp = {username:username, password:password};
 	// var tmp = {username:username, password:hash};
 	let jsonPayload = JSON.stringify(tmp);
@@ -117,7 +89,8 @@ function doLogin()
 
 				if (userId < 1)
 				{
-					console.log("Incorrect login");
+					passwordError.innerHTML = "Incorrect username/password";
+					passwordError.style.display = "inline-block";
 					return;
 				}
 
@@ -299,14 +272,32 @@ function registerPassword()
 
 function registerUsername()
 {
+	readCookie();
+
 	let username = document.getElementById("registerUsername").value;
 	let usernameError = document.getElementById("registerUsernameError");
 
-	// Example feature
-	if (username == "user")
+	let tmp = {userID:userId, ID:val};
+	let jsonPayload = JSON.stringify( tmp );
+	let url = urlBase + '/SearchUser.' + extension;
+	let xhr = new XMLHttpRequest();
+	xhr.open("POST", url, true);
+	xhr.setRequestHeader("Content-type", "application/json; charset=UTF-8");
+	try
 	{
-		usernameError.innerHTML = username + " already exists";
-		usernameError.style.display = "inline-block";
+		xhr.onreadystatechange = function()
+		{
+			if (this.readyState == 4 && this.status == 200)
+			{
+				usernameError.innerHTML = username + " already exists";
+				usernameError.style.display = "inline-block";
+			}
+		};
+		xhr.send(jsonPayload);
+	}
+	catch(err)
+	{
+		console.log(err.message);
 	}
 }
 
