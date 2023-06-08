@@ -566,9 +566,9 @@ function editContact(val)
 	document.getElementById("Email_" + val).removeAttribute("href");
 
 	document.getElementById("FirstName_" + val).innerHTML =
-		'<input type="text" class="editContact" id="FirstNameInput_' + val + '" ' + 'value="' + firstName + '"/>';
+		'<input type="text" onkeydown="editProceed(' + val + ');" class="editContact" id="FirstNameInput_' + val + '" ' + 'value="' + firstName + '"/>';
 	document.getElementById("LastName_" + val).innerHTML =
-		'<input type="text" class="editContact" id="LastNameInput_' + val + '" ' + 'value="' + lastName + '"/>';
+		'<input type="text" onkeydown="editProceed(' + val + ');" class="editContact" id="LastNameInput_' + val + '" ' + 'value="' + lastName + '"/>';
 	document.getElementById("Phone_" + val).innerHTML =
 		'<input type="text" oninput="phoneNumber(this);" onkeydown="editProceed(' + val + ');" class="editContact" id="PhoneInput_' + val + '" ' + 'value="' + phone + '"/>';
 	document.getElementById("Email_" + val).innerHTML =
