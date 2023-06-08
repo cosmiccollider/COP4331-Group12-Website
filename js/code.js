@@ -659,10 +659,10 @@ function searchContacts()
 					let id = jsonObject.results[i].ID;
 
 					contactList += '<tr id="' + id + '">' +
-						'<th class="contactInformation" id="FirstName_' + id + '">' + jsonObject.results[i].FirstName + "</th>" +
-						'<th class="contactInformation" id="LastName_' + id + '">' + jsonObject.results[i].LastName + "</th>" +
-						'<th class="contactInformation" id = "Phone_' + id + '">' + jsonObject.results[i].Phone + "</th>" +
-						'<th class="contactInformation"><a id="Email_' + id + '" href="mailto:' + jsonObject.results[i].Email + '">' + jsonObject.results[i].Email + "</a></th>" +
+						'<th class="contactInfoFirstName" id="FirstName_' + id + '">' + jsonObject.results[i].FirstName + "</th>" +
+						'<th class="contactInfoLastName" id="LastName_' + id + '">' + jsonObject.results[i].LastName + "</th>" +
+						'<th class="contactInfoPhone" id = "Phone_' + id + '">' + jsonObject.results[i].Phone + "</th>" +
+						'<th class="contactInfoEmail"><a id="Email_' + id + '" href="mailto:' + jsonObject.results[i].Email + '">' + jsonObject.results[i].Email + "</a></th>" +
 						'<th>' + '<button type="button" ' + 'onclick="editContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-outlined">edit</button>' + "</th>" +
 						'<th>' + '<button type="button" ' + 'onclick="deleteContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-outlined">person_remove</button>' + "</th>" +
 					"</tr>";

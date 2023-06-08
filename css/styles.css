@@ -212,6 +212,26 @@ input[class="editContact"]
     width: 80%;
 }
 
+th[class="contactInfoFirstName"]
+{
+    width: 18%;
+}
+
+th[class="contactInfoLastName"]
+{
+    width: 18%;
+}
+
+th[class="contactInfoEmail"]
+{
+    width: 37%;
+}
+
+th[class="contactInfoPhone"]
+{
+    width: 20%;
+}
+
 input[type="text"]:focus,input[type="password"]:focus
 {
     outline: solid;
