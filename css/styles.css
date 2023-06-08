@@ -259,8 +259,9 @@ input[type="text"]:focus,input[type="password"]:focus
 
 #addContactButton
 {
-    background: #ffffff;
-    border-radius: 5px;
+    background: var(--pink);
+    border: 2px solid var(--pink-border);
+    border-radius: 10px;
     font-size: 40px;
     height: 50px;
     margin-right: 10px;
@@ -270,13 +271,13 @@ input[type="text"]:focus,input[type="password"]:focus
 
 #addContactButton:hover
 {
-    background: #f9c4d2;
+    background: var(--pink);
     transform: rotate(90deg);
 }
 
 #addContactButton:active
 {
-    background: #b18597;
+    background: var(--dark-pink);
     transform: rotate(90deg);
 }
 
