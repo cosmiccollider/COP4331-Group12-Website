@@ -622,7 +622,7 @@ function searchContacts()
 						'<th class="contactInformation" id="LastName_' + id + '">' + jsonObject.results[i].LastName + "</th>" +
 						'<th class="contactInformation" id = "Phone_' + id + '">' + jsonObject.results[i].Phone + "</th>" +
 						'<th class="contactInformation" id = "Email_' + id + '">' + jsonObject.results[i].Email + "</th>" +
-						'<th>' + '<button type="button" ' + 'onclick="editContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-outlined"><span class="material-symbols-outlined">search</span></button>' + "</th>" +
+						'<th>' + '<button type="button" ' + 'onclick="editContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-outlined">edit</button>' + "</th>" +
 						'<th>' + '<button type="button" ' + 'onclick="deleteContact(' + id + ');" ' + 'id="EditButton_' + id + '" class="material-symbols-outlined">person_remove</button>' + "</th>" +
 					"</tr>";
 				}
