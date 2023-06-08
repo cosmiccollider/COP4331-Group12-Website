@@ -16,9 +16,9 @@
         <div class="mainContent" id="loginDiv">
             <span id="inner-title">Log In</span>
 
-            <input type="text" class="inputText" id="loginUsername" oninput="clearError(this);" onkeydown="keyInput(this);" placeholder="Username"/>
+            <input type="text" class="inputText" id="loginUsername" oninput="clearError(this);" onkeydown="proceed(this);" placeholder="Username"/>
             <span class="error" id="loginUsernameError"></span>
-            <input type="password" class="inputText" id="loginPassword" oninput="clearError(this);" onkeydown="keyInput(this);" placeholder="Password"/>
+            <input type="password" class="inputText" id="loginPassword" oninput="clearError(this);" onkeydown="proceed(this);" placeholder="Password"/>
             <span class="material-symbols-rounded passwordVisibility" id="loginVisibility" title="Show Password" onclick="toggleVisibility(this);">visibility</span><br>
             <span class="error" id="loginPasswordError"></span>
             

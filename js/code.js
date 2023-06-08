@@ -583,10 +583,16 @@ function onContactsLoad()
 
 function searchContacts()
 {
-	readCookie();
-
 	let srch = document.getElementById("searchContacts").value;
 	document.getElementById("searchContactsResult").innerHTML = "";
+
+	if (srch == "")
+	{
+		document.getElementById("contactList").innerHTML = "";
+		return;
+	}
+
+	readCookie();
 
 	let contactList = "";
 

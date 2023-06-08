@@ -293,13 +293,6 @@ input[type="text"]:focus,input[type="password"]:focus
     margin-left: -10px;
 }
 
-#contactsDiv
-{
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    display: flex;
-}
-
 #footerDiv
 {
     margin-left: 10%;
@@ -308,7 +301,7 @@ input[type="text"]:focus,input[type="password"]:focus
 
 #inner-title
 {
-    color: #ffffff;
+    color: #4d4d4d;
     display: inline-block;
     font-size: 40px;
     margin-top: 0px;
@@ -350,6 +343,13 @@ input[type="text"]:focus,input[type="password"]:focus
     display: none;
 }
 
+#searchDiv
+{
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    display: flex;
+}
+
 #contactList
 {
     width: 70%;
@@ -386,4 +386,3 @@ input[type="text"]:focus,input[type="password"]:focus
     margin-bottom: 10px;
     width: 100%;
 }
-
