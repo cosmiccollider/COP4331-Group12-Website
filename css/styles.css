@@ -212,6 +212,21 @@ input[class="editContact"]
     width: 80%;
 }
 
+input[class="editContactInvalid"]
+{
+    background: #ffffff;
+    border: none;
+    font-size: 20px;
+    height: 50px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    outline: red;
+    outline-style: dashed;
+    outline-width: thick;
+    transition: 0.1s;
+    width: 80%;
+}
+
 th[class="contactInfoFirstName"]
 {
     width: 18%;

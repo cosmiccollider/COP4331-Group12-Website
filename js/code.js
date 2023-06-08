@@ -332,9 +332,9 @@ function birthday()
 }
 
 // Formats phone number input field as XXX-XXXX or (XXX) XXX-XXXX depending on number of digits
-function phoneNumber()
+function phoneNumber(val)
 {
-	let phoneField = document.getElementById("phoneNumber");
+	let phoneField = val;
 	let phoneError = document.getElementById("phoneNumberError");
 	let phoneValue = phoneField.value.replace(/\D/g, "");
 
@@ -362,7 +362,7 @@ function emailAddress()
 {
 	let emailField = document.getElementById("email");
 	let emailError = document.getElementById("emailError");
-	let emailString = email.value;
+	let emailString = emailField.value;
 	let emailSplit = emailString.split('@');
 
 	if (emailString.length > 0 && emailSplit.length != 2)
@@ -570,11 +570,46 @@ function editContact(val)
 	document.getElementById("LastName_" + val).innerHTML =
 		'<input type="text" class="editContact" id="LastNameInput_' + val + '" ' + 'value="' + lastName + '"/>';
 	document.getElementById("Phone_" + val).innerHTML =
-		'<input type="text" class="editContact" id="PhoneInput_' + val + '" ' + 'value="' + phone + '"/>';
+		'<input type="text" oninput="phoneNumber(this);" onkeydown="editProceed(' + val + ');" class="editContact" id="PhoneInput_' + val + '" ' + 'value="' + phone + '"/>';
 	document.getElementById("Email_" + val).innerHTML =
-		'<input type="text" class="editContact" id="EmailInput_' + val + '" ' + 'value="' + email + '"/>';
+		'<input type="text" oninput="emailValidate(' + val + ');" onkeydown="editProceed(' + val + ');" class="editContact" id="EmailInput_' + val + '" ' + 'value="' + email + '"/>';
 
 	document.getElementById("EditButton_" + val).setAttribute("onclick", "finalizeEdit(" + val + ");");
+}
+
+function editProceed(val){
+	if (event.key === "Enter"){
+		finalizeEdit(val);
+	}
+}
+
+function validPhone(str){
+	return true;
+}
+
+function emailValidate(val){
+	let email = document.getElementById("EmailInput_" + val).value;
+	if (!validEmail(email)){
+		document.getElementById("EmailInput_" + val).setAttribute("class", "editContactInvalid");
+		return false;
+	}
+	document.getElementById("EmailInput_" + val).setAttribute("class", "editContact");
+	return true;
+}
+
+function validEmail(str){
+	let emailSplit = str.split('@');
+
+	if (str.length > 0 && emailSplit.length != 2)
+	{
+		return false;
+	} else {
+		let domain = emailSplit[1].split('.');
+		if (domain.length != 2 || domain[1].length < 2){
+			return false;
+		}
+	}
+	return true;
 }
 
 function finalizeEdit(val)
@@ -583,6 +618,21 @@ function finalizeEdit(val)
 	let lastName = document.getElementById("LastNameInput_" + val).value;
 	let phone = document.getElementById("PhoneInput_" + val).value;
 	let email = document.getElementById("EmailInput_" + val).value;
+
+	// Validation
+
+	let phoneValidity = validPhone(phone);
+	let emailValidity = validEmail(email);
+
+	if (!phoneValidity){
+		document.getElementById("Phone_" + val).setAttribute("class", "editContactInvalid");
+	}
+
+	if (!phoneValidity || !emailValidity){
+		return;
+	}
+
+	// Clearing out editing and writing to Database
 
 	document.getElementById("FirstName_" + val).innerHTML = firstName;
 	document.getElementById("LastName_" + val).innerHTML = lastName;
